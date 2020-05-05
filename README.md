@@ -8,7 +8,7 @@ Em **_app.modules.ts_** importe o **HttpClientModule**
 
 `import { HttpClientModule } from '@angular/common/http';`
 
-Meu arquivo **_eventos.component.ts_** ficará da seguinte forma:
+O arquivo **_eventos.component.ts_** ficará da seguinte forma:
 
 ```ts
 export class EventosComponent implements OnInit {
@@ -69,5 +69,5 @@ public void Configure (IApplicationBuilder app, IWebHostEnvironment env)
     });
 }
 ```
-
-![paulo barbosa](face-notebook_300x292.jpg)
+#
+![paulo barbosa](screen/face-notebook_300x292.jpg)

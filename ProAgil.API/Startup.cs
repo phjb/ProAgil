@@ -29,10 +29,11 @@ namespace ProAgil.API
                 app.UseDeveloperExceptionPage ();
             }
 
-            // app.UseCors (x => x.AllowAnyOrigin () // permito toda origem
-            //     .AllowAnyMethod () // permito todos os metodos
-            //     .AllowAnyHeader () // permito todos cabeçalho
-            // );
+            app.UseCors (x => x.AllowAnyOrigin () // permito toda origem
+                .AllowAnyMethod () // permito todos os metodos
+                .AllowAnyHeader () // permito todos cabeçalho
+            );
+
             //  app.UseHttpsRedirection();
 
             app.UseRouting ();
