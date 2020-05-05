@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/mnt/d/Cursos/Udemy/Seja Full-Stack com Asp.NET Core Web API, Angular e EF Core/ProAgil.MVC/ProAgil.MVC.csproj": {}
+  },
+  "projects": {
+    "/mnt/d/Cursos/Udemy/Seja Full-Stack com Asp.NET Core Web API, Angular e EF Core/ProAgil.MVC/ProAgil.MVC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/mnt/d/Cursos/Udemy/Seja Full-Stack com Asp.NET Core Web API, Angular e EF Core/ProAgil.MVC/ProAgil.MVC.csproj",
+        "projectName": "ProAgil.MVC",
+        "projectPath": "/mnt/d/Cursos/Udemy/Seja Full-Stack com Asp.NET Core Web API, Angular e EF Core/ProAgil.MVC/ProAgil.MVC.csproj",
+        "packagesPath": "/home/paulo/.nuget/packages/",
+        "outputPath": "/mnt/d/Cursos/Udemy/Seja Full-Stack com Asp.NET Core Web API, Angular e EF Core/ProAgil.MVC/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/paulo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
