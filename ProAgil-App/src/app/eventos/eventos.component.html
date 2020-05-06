@@ -1,8 +1,54 @@
-
-<div *ngFor="let item of eventos">
-  Tema: {{item.tema}}<br>
-  Local: {{item.local}}
-  <hr>
+<div class="form-inline">
+	<div class="form-group mb-2">
+		<input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="listFilter">
+		<button class="btn btn-outline-success">buscar</button>
+	</div>
 </div>
+<h5>Filtro: {{listFilter}}</h5>
+<table class="table table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>
+				<button class="btn btn-primary" (click)="changeImage()">
+					{{titleShowImage}}
+				</button>
+			</th>
+			<th>#</th>
+			<th>Tema</th>
+			<th>Local</th>
+			<th>Data</th>
+			<th>Qtde Pessoas</th>
+			<th>Lote</th>
+			<th>Opções</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="events &&events.length">
+		<tr *ngFor="let e of eventsFilters">
+			<td>
+				<img *ngIf="showImage && e.imagemUrl.length" src="http://localhost:5000/img/{{e.imagemUrl}}" [style.width.px]="imageWidth"
+					[style.margin.px]="imageMargin">
 
-<div></div>
+			</td>
+			<td>{{e.eventoId}}</td>
+			<td>{{e.tema | uppercase}}</td>
+			<td>{{e.local}}</td>
+			<td>{{e.dataEvento }}</td>
+			<td>{{e.qtdPessoas}}</td>
+			<td>{{e.lote}}</td>
+			<td class="text-center">
+				<button class="btn btn-success mr-2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+				<button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot *ngIf="!events.length">
+		<tr>
+			<td colspan="7" class="bg-secondary">
+				<div class="text-center text-white">
+					Nenhum evento encontrado!
+				</div>
+
+			</td>
+		</tr>
+	</tfoot>
+</table>
