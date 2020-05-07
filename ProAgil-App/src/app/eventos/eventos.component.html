@@ -1,7 +1,7 @@
 <div class="form-inline">
 	<div class="form-group mb-2">
 		<input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="listFilter">
-		<button class="btn btn-outline-success">buscar</button>
+		<!-- <button class="btn btn-outline-success"(click)="filterEvents(listFilter)">buscar</button> -->
 	</div>
 </div>
 <h5>Filtro: {{listFilter}}</h5>
@@ -10,7 +10,7 @@
 		<tr>
 			<th>
 				<button class="btn btn-primary" (click)="changeImage()">
-					{{titleShowImage}}
+					<i class="{{titleShowImage}}"></i>
 				</button>
 			</th>
 			<th>#</th>
@@ -22,28 +22,37 @@
 			<th>Opções</th>
 		</tr>
 	</thead>
-	<tbody *ngIf="events &&events.length">
+	<tbody *ngIf="events && eventsFilters.length">
 		<tr *ngFor="let e of eventsFilters">
 			<td>
-				<img *ngIf="showImage && e.imagemUrl.length" src="http://localhost:5000/img/{{e.imagemUrl}}" [style.width.px]="imageWidth"
-					[style.margin.px]="imageMargin">
+				<img *ngIf="showImage && e.imagemUrl.length" src="http://localhost:5000/img/{{e.imagemUrl}}"
+					[style.width.px]="imageWidth" [style.margin.px]="imageMargin">
 
 			</td>
-			<td>{{e.eventoId}}</td>
+			<td>{{e.id}}</td>
 			<td>{{e.tema | uppercase}}</td>
 			<td>{{e.local}}</td>
-			<td>{{e.dataEvento }}</td>
+			<td>{{e.dataEvento | DateTimeFormatPipe }}</td>
 			<td>{{e.qtdPessoas}}</td>
-			<td>{{e.lote}}</td>
-			<td class="text-center">
-				<button class="btn btn-success mr-2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-				<button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+			<td>
+				<div *ngIf="!e.lotes.length">
+					Não Informado!
+				</div>
+				<div *ngIf="e.lotes.length">
+					{{e.lotes[0].nome}}
+				</div>
+			</td>
+					<td class="text-center">
+				<button class="btn btn-success mr-2" tooltip="Editar" (click)="openModal(template)">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+				<button class="btn btn-danger" tooltip="Excluir">
+					<i class="fa fa-trash" aria-hidden="true"></i></button>
 			</td>
 		</tr>
 	</tbody>
-	<tfoot *ngIf="!events.length">
+	<tfoot *ngIf="eventsFilters == null || eventsFilters.length <=0">
 		<tr>
-			<td colspan="7" class="bg-secondary">
+			<td colspan="8" class="bg-secondary">
 				<div class="text-center text-white">
 					Nenhum evento encontrado!
 				</div>
@@ -52,3 +61,18 @@
 		</tr>
 	</tfoot>
 </table>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right"
+    aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  This is a modal.
+</div>
+</ng-template>
+
+
