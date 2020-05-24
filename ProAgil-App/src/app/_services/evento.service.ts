@@ -7,7 +7,7 @@ import { Evento } from '../_models/Evento';
   providedIn: 'root'
 })
 export class EventoService {
-  baseUrl = 'http://localhost:5000/api/eventos/';
+  baseUrl = 'http://localhost:5000/api/eventos';
   constructor(private http: HttpClient) { }
 
   getEvento(): Observable<Evento[]> {
@@ -20,5 +20,17 @@ export class EventoService {
 
   getEventoById(id: number): Observable<Evento[]> {
     return this.http.get<Evento[]>(`${this.baseUrl}/${id}`);
+  }
+
+  postEvento(evento: Evento) {
+    return this.http.post(this.baseUrl, evento);
+  }
+
+  putEvento(evento: Evento, id: number) {
+    return this.http.put(`${this.baseUrl}/${id}`, evento);
+  }
+
+  removeEvento(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }
