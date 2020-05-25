@@ -1,4 +1,5 @@
 using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,6 +30,7 @@ namespace ProAgil.API
             services.AddDbContext<ProAgilContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddCors();
+            services.AddAutoMapper();
             services.AddControllers();
              services.AddScoped<IProAgilRepository, ProAgilRepository>();
         }

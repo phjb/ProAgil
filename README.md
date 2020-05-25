@@ -73,5 +73,8 @@ public void Configure (IApplicationBuilder app, IWebHostEnvironment env)
 ## Entidades
 ![entidades](screen/2.png)
 
+## AutoMapper
+![entidades](screen/3.png)
+
 #
 ![paulo barbosa](screen/face-notebook_300x292.jpg)

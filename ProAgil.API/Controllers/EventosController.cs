@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProAgil.API.Dtos;
 using ProAgil.Domain.Entities;
 using ProAgil.Repository.Context;
 using ProAgil.Repository.IRepositories;
@@ -13,9 +16,11 @@ namespace ProAgil.API.Controllers
     {
         private readonly IProAgilRepository _repo;
         private readonly ProAgilContext _context;
+        private readonly IMapper _mapper;
 
-        public EventosController(IProAgilRepository repo, ProAgilContext context)
+        public EventosController(IProAgilRepository repo, ProAgilContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
             _context = context;
         }
@@ -26,7 +31,8 @@ namespace ProAgil.API.Controllers
             try
             {
                 var eventos = await _repo.GetAllEventosAsync(true);
-                return Ok(eventos);
+                var results = _mapper.Map<IEnumerable<EventoDto>>(eventos);
+                return Ok(results);
             }
             catch (System.Exception)
             {
@@ -40,7 +46,9 @@ namespace ProAgil.API.Controllers
         {
             try
             {
-                return Ok(await _repo.GetEventosAsyncById(id, true));
+                var evento = await _repo.GetEventosAsyncById(id, true);
+                var result = _mapper.Map<EventoDto>(evento);
+                return Ok(evento);
             }
             catch (System.Exception)
             {
@@ -117,7 +125,7 @@ namespace ProAgil.API.Controllers
 
         }
 
-          [HttpDelete("{EventoId}")]
+        [HttpDelete("{EventoId}")]
         public async Task<ActionResult<Evento>> Delete(int EventoId)
         {
             try
